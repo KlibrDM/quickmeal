@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endpointGateway: "https://www.themealdb.com/api/json/v1/1/",
 };
 
 /*

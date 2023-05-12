@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{meal ? meal.name : 'Meal'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{meal ? meal.name : 'Meal'}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding" *ngIf="meal">
+    <div class="image-title-row">
+      <img [src]="meal.image" [alt]="meal.name" class="meal-image" />
+      <div>
+        <h3>{{meal.name}}</h3>
+        <div>
+          <ion-chip [outline]="true" class="ion-no-margin">{{meal.category}}</ion-chip>
+          <ion-chip [outline]="true">{{meal.area}}</ion-chip>
+        </div>
+        <p class="instructions">{{meal.instructions}}</p>
+      </div>
+    </div>
+    <h4>Ingredients</h4>
+    <ion-grid class="ingredients-table">
+      <ion-row *ngFor="let ingredient of meal.ingredients" class="ion-align-items-center">
+        <ion-col size="2">
+          <img
+            [src]="'https://www.themealdb.com/images/ingredients/' + ingredient.name + '-Small.png'"
+            [alt]="ingredient.name"
+            class="ingredient-image"
+          />
+        </ion-col>
+        <ion-col>{{ingredient.name}}</ion-col>
+        <ion-col>{{ingredient.measure}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <div>
+      <a [href]="meal.source"><ion-button>Recipe source</ion-button></a>
+    </div>
+    <div>
+      <a [href]="meal.youtube"><ion-button>Watch on YouTube</ion-button></a>
+    </div>
+  </div>
+</ion-content>

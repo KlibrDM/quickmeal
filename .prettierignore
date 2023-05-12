@@ -1,0 +1,6 @@
+/**/*.*
+!/src/**/*.ts
+!/src/**/*.js
+!/src/**/*.html
+!/src/**/*.css
+!/src/**/*.scss

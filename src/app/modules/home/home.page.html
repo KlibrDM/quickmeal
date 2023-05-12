@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Discover</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Discover</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngIf="randomMeal">
+    <ion-card (click)="seeDetails($event)" class="random-meal-card">
+      <ion-card-content>
+        <img [src]="randomMeal.image" [alt]="randomMeal.name" class="random-image" />
+      </ion-card-content>
+      <div class="card-text">
+        <ion-card-title>{{randomMeal.name}}</ion-card-title>
+        <div class="card-chips">
+          <ion-chip [outline]="true" class="ion-no-margin">{{randomMeal.category}}</ion-chip>
+          <ion-chip [outline]="true">{{randomMeal.area}}</ion-chip>
+        </div>
+        <ion-row class="button-row ion-justify-content-between">
+          <ion-button (click)="seeDetails($event)">See details</ion-button>
+          <ion-button (click)="tryAnother($event)">Try another</ion-button>
+        </ion-row>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

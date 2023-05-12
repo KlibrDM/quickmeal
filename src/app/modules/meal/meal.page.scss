@@ -1,0 +1,29 @@
+.meal-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.instructions {
+  white-space: pre-wrap;
+}
+
+.ingredients-table {
+  max-width: 800px;
+  margin-inline: 0;
+}
+
+.image-title-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .meal-image {
+    max-width: clamp(240px, 40vw, 480px);
+  }
+  .image-title-row {
+    flex-direction: row;
+    gap: 16px;
+  }
+}

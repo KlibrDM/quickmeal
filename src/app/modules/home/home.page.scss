@@ -1,0 +1,34 @@
+.random-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.random-meal-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  padding: 0px 16px 16px 16px;
+}
+
+.card-chips {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .random-image {
+    max-width: 480px;
+  }
+  .button-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-text {
+    padding: 16px 16px 16px 16px;
+  }
+  .random-meal-card {
+    flex-direction: row;
+  }
+}
