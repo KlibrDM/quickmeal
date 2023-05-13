@@ -1,17 +1,17 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="bg-white">
   <ion-toolbar>
     <ion-title> Search </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="use-background">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Search</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="ion-padding">
+  <div class="ion-padding bg-white">
     <ion-input
       #searchInput
       label="Search"
@@ -21,7 +21,7 @@
     ></ion-input>
   </div>
 
-  <ion-list>
+  <ion-list *ngIf="mealList.length">
     <ion-item *ngFor="let meal of mealList, let i = index">
       <ion-label (click)="seeDetails(i)">{{meal.name}}</ion-label>
     </ion-item>
