@@ -1,6 +1,8 @@
 {
   "name": "quickmeal",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular",
   "id": "6e168b5b"
 }

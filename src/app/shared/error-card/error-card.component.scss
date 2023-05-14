@@ -1,0 +1,18 @@
+ion-card-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+ion-card-title > img {
+  width: 160px;
+}
+
+ion-card-subtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}

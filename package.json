@@ -1,8 +1,8 @@
 {
   "name": "quickmeal",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Patrick CC",
+  "description": "QuickMeal",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@capacitor/android": "5.0.3",
     "@capacitor/app": "5.0.2",
     "@capacitor/core": "5.0.3",
     "@capacitor/haptics": "5.0.2",
@@ -63,6 +64,5 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ts-node": "^8.3.0",
     "typescript": "~5.0.2"
-  },
-  "description": "An Ionic project"
+  }
 }

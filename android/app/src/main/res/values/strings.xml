@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">QuickMeal</string>
+    <string name="title_activity_main">QuickMeal</string>
+    <string name="package_name">com.patrickcc.quickmeal</string>
+    <string name="custom_url_scheme">com.patrickcc.quickmeal</string>
+</resources>

@@ -5,9 +5,10 @@ import { FormsModule } from "@angular/forms";
 import { SearchPage } from "./search.page";
 
 import { SearchPageRoutingModule } from "./search-routing.module";
+import { SharedModule } from "src/app/shared/shared.module";
 
 @NgModule({
-  imports: [IonicModule, CommonModule, FormsModule, SearchPageRoutingModule],
+  imports: [IonicModule, CommonModule, FormsModule, SearchPageRoutingModule, SharedModule],
   declarations: [SearchPage],
 })
 export class SearchPageModule {}

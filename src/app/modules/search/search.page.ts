@@ -12,17 +12,55 @@ import { DataService } from "src/app/services/data.service";
 export class SearchPage implements AfterViewInit {
   @ViewChild("searchInput", { read: ElementRef }) searchInput!: ElementRef;
   mealList: Meal[] = [];
+  isSearching: boolean = false;
+
+  generalError: boolean = false;
+  internetError: boolean = false;
+  noDataError: boolean = false;
 
   constructor(private dataService: DataService, private router: Router) {}
 
   ngAfterViewInit(): void {
     fromEvent(this.searchInput.nativeElement, "input")
       .pipe(map((event: any) => event.target.value))
+      .pipe(
+        map((e) => {
+          this.isSearching = true;
+          return e;
+        })
+      )
       .pipe(debounceTime(1500))
       .pipe(distinctUntilChanged())
       .subscribe((searchTerm) => {
-        this.dataService.getSearch(searchTerm).subscribe((data) => {
-          this.mealList = data;
+        if (searchTerm === "") {
+          this.mealList = [];
+          this.noDataError = false;
+          this.isSearching = false;
+          return;
+        }
+
+        this.dataService.getSearch(searchTerm).subscribe({
+          next: (data) => {
+            this.mealList = data;
+
+            this.isSearching = false;
+            this.internetError = false;
+            this.generalError = false;
+            if (this.mealList.length === 0) {
+              this.noDataError = true;
+            } else {
+              this.noDataError = false;
+            }
+          },
+          error: (err) => {
+            this.mealList = [];
+            this.isSearching = false;
+            if (err.status === 0) {
+              this.internetError = true;
+            } else {
+              this.generalError = true;
+            }
+          },
         });
       });
   }

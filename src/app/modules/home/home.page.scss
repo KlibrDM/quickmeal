@@ -1,11 +1,22 @@
 .random-image {
   width: 100%;
+  position: absolute;
   border-radius: 8px;
+  top: 0;
+}
+
+.random-image-div {
+  width: 100%;
+  border-radius: 8px;
+  padding-top: 100%;
+  position: relative;
+  background-color: #e6e6e6;
 }
 
 .random-meal-card {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .card-text {
@@ -19,7 +30,10 @@
 
 @media screen and (min-width: 768px) {
   .random-image {
-    max-width: 480px;
+    width: 480px;
+  }
+  .random-image-div {
+    width: 480px;
   }
   .button-row {
     flex-direction: column;

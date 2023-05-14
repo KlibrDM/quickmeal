@@ -11,10 +11,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <div *ngIf="randomMeal">
+  <div *ngIf="randomMeal && !(generalError || internetError)">
     <ion-card (click)="seeDetails($event)" class="random-meal-card">
       <ion-card-content>
-        <img [src]="randomMeal.image" [alt]="randomMeal.name" class="random-image" />
+        <div class="random-image-div">
+          <img [src]="randomMeal.image" [alt]="randomMeal.name" class="random-image" />
+        </div>
       </ion-card-content>
       <div class="card-text">
         <ion-card-title>{{randomMeal.name}}</ion-card-title>
@@ -29,4 +31,11 @@
       </div>
     </ion-card>
   </div>
+
+  <app-error-card
+    [generalError]="generalError"
+    [internetError]="internetError"
+    [allowRetry]="true"
+    (retry)="retry()"
+  ></app-error-card>
 </ion-content>

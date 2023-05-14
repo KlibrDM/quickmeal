@@ -10,19 +10,51 @@ import { DataService } from "src/app/services/data.service";
 })
 export class HomePage implements OnInit {
   randomMeal?: Meal;
+
+  generalError: boolean = false;
+  internetError: boolean = false;
+
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.dataService.getRandom().subscribe((data) => {
-      this.randomMeal = data[0];
+    this.dataService.getRandom().subscribe({
+      next: (data) => {
+        this.randomMeal = data[0];
+
+        this.generalError = false;
+        this.internetError = false;
+      },
+      error: (err) => {
+        if (err.status === 0) {
+          this.internetError = true;
+        } else {
+          this.generalError = true;
+        }
+      },
     });
   }
 
-  tryAnother(event: MouseEvent) {
-    event.stopPropagation();
-    this.dataService.getRandom().subscribe((data) => {
-      this.randomMeal = data[0];
+  tryAnother(event?: MouseEvent) {
+    event?.stopPropagation();
+    this.dataService.getRandom().subscribe({
+      next: (data) => {
+        this.randomMeal = data[0];
+
+        this.generalError = false;
+        this.internetError = false;
+      },
+      error: (err) => {
+        if (err.status === 0) {
+          this.internetError = true;
+        } else {
+          this.generalError = true;
+        }
+      },
     });
+  }
+
+  retry() {
+    this.tryAnother();
   }
 
   seeDetails(event: MouseEvent) {

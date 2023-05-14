@@ -1,0 +1,23 @@
+<ion-card *ngIf="generalError || internetError">
+  <ion-card-content>
+    <ion-card-title>
+      <img
+        [src]="generalError ? '../../../assets/error-general.png' : '../../../assets/error-no-internet.png'"
+        alt="Error"
+        class="error-image"
+      />
+      {{ generalError ? "Something went wrong" : "No internet connection" }}
+    </ion-card-title>
+    <ion-card-subtitle>
+      {{ generalError ? "Please try again later" : "Please check your internet connection" }}
+      <ion-button *ngIf="allowRetry" (click)="retryClicked()">Retry</ion-button>
+    </ion-card-subtitle>
+  </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="noDataError">
+  <ion-card-content>
+    <ion-card-title>No data found</ion-card-title>
+    <ion-card-subtitle>Please try looking for something else</ion-card-subtitle>
+  </ion-card-content>
+</ion-card>

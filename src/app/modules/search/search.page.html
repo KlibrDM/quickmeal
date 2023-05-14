@@ -18,12 +18,21 @@
       label-placement="floating"
       fill="outline"
       placeholder="Meal name"
+      class="search-input"
     ></ion-input>
+    <div class="progress-bar-placeholder" *ngIf="!isSearching"></div>
+    <ion-progress-bar type="indeterminate" *ngIf="isSearching"></ion-progress-bar>
   </div>
 
   <ion-list *ngIf="mealList.length">
-    <ion-item *ngFor="let meal of mealList, let i = index">
+    <ion-item *ngFor="let meal of mealList, let i = index" class="search-item">
       <ion-label (click)="seeDetails(i)">{{meal.name}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <app-error-card
+    [generalError]="generalError"
+    [internetError]="internetError"
+    [noDataError]="noDataError"
+  ></app-error-card>
 </ion-content>
