@@ -11,7 +11,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="ion-padding" *ngIf="meal">
+  <div class="ion-padding" *ngIf="meal && !(generalError || internetError)">
     <div class="image-title-row">
       <img [src]="meal.image" [alt]="meal.name" class="meal-image" />
       <div>
@@ -44,4 +44,11 @@
       <a [href]="meal.youtube"><ion-button>Watch on YouTube</ion-button></a>
     </div>
   </div>
+
+  <app-error-card
+    [generalError]="generalError"
+    [internetError]="internetError"
+    [allowRetry]="true"
+    (retry)="retry()"
+  ></app-error-card>
 </ion-content>

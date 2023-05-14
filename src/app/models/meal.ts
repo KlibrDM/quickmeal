@@ -18,3 +18,9 @@ export interface Meal {
   youtube: string;
   ingredients: MealIngredient[];
 }
+
+export interface MealThumbnail {
+  id: string;
+  name: string;
+  image: string;
+}

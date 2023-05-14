@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Meal } from "src/app/models/meal";
+import { DataService } from "src/app/services/data.service";
 
 @Component({
   selector: "app-meal",
@@ -9,7 +10,11 @@ import { Meal } from "src/app/models/meal";
 })
 export class MealPage implements OnInit {
   meal?: Meal;
-  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  generalError: boolean = false;
+  internetError: boolean = false;
+
+  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((_params) => {
@@ -17,8 +22,37 @@ export class MealPage implements OnInit {
       if (navigationExtras?.["meal"]) {
         this.meal = navigationExtras?.["meal"];
       } else {
-        // TODO: Implement get by id
+        const id = this.route.snapshot.paramMap.get("id");
+        if (id) {
+          this.getMeal(id);
+        }
       }
     });
+  }
+
+  getMeal(id: string) {
+    this.dataService.getMealById(id).subscribe({
+      next: (data) => {
+        this.meal = data[0];
+
+        this.generalError = false;
+        this.internetError = false;
+      },
+      error: (err) => {
+        this.meal = undefined;
+        if (err.status === 0) {
+          this.internetError = true;
+        } else {
+          this.generalError = true;
+        }
+      },
+    });
+  }
+
+  retry() {
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id) {
+      this.getMeal(id);
+    }
   }
 }

@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import("../meal/meal.module").then((m) => m.MealPageModule),
       },
       {
+        path: "categories",
+        loadChildren: () => import("../categories/categories.module").then((m) => m.CategoriesPageModule),
+      },
+      {
         path: "",
         redirectTo: "/tabs/home",
         pathMatch: "full",
