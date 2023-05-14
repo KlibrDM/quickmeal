@@ -3,6 +3,8 @@ import { MealPage } from "./meal.page";
 import { IonicModule } from "@ionic/angular";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { RouterTestingModule } from "@angular/router/testing";
+import { SharedModule } from "src/app/shared/shared.module";
+import { IonicStorageModule } from "@ionic/storage-angular";
 
 describe("MealPage", () => {
   let component: MealPage;
@@ -11,7 +13,13 @@ describe("MealPage", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MealPage],
-      imports: [IonicModule.forRoot(), HttpClientTestingModule, RouterTestingModule],
+      imports: [
+        IonicModule.forRoot(),
+        IonicStorageModule.forRoot(),
+        HttpClientTestingModule,
+        RouterTestingModule,
+        SharedModule,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MealPage);

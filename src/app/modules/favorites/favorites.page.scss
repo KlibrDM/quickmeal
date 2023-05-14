@@ -1,0 +1,45 @@
+ion-card-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+ion-card-content > img {
+  width: 100px;
+}
+
+.text-div {
+  width: 100%;
+}
+
+.meal-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.meal-name > ion-icon {
+  font-size: 1em;
+  flex-shrink: 0;
+}
+
+.meal-name > ion-icon:hover {
+  color: #5b5b5b;
+}
+
+.meal-chips {
+  margin-top: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  ion-card-content > img {
+    width: 160px;
+  }
+  .meal-name {
+    justify-content: flex-start;
+  }
+  .meal-name > ion-icon {
+    font-size: 1.2em;
+  }
+}

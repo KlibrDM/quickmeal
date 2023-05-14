@@ -3,6 +3,7 @@ import { IonicModule } from "@ionic/angular";
 
 import { SearchPage } from "./search.page";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { SharedModule } from "src/app/shared/shared.module";
 
 describe("SearchPage", () => {
   let component: SearchPage;
@@ -11,7 +12,7 @@ describe("SearchPage", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SearchPage],
-      imports: [IonicModule.forRoot(), HttpClientTestingModule],
+      imports: [IonicModule.forRoot(), HttpClientTestingModule, SharedModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchPage);

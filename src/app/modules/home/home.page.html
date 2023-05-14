@@ -12,7 +12,7 @@
   </ion-header>
 
   <div *ngIf="randomMeal && !(generalError || internetError)">
-    <ion-card (click)="seeDetails($event)" class="random-meal-card">
+    <ion-card (click)="seeDetails($event)" class="random-meal-card pointer">
       <ion-card-content>
         <div class="random-image-div">
           <img [src]="randomMeal.image" [alt]="randomMeal.name" class="random-image" />

@@ -3,6 +3,21 @@
   border-radius: 8px;
 }
 
+.meal-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meal-name > ion-icon {
+  margin-top: 4px;
+  font-size: 1.5em;
+}
+
+.meal-name > ion-icon:hover {
+  color: #5b5b5b;
+}
+
 .instructions {
   white-space: pre-wrap;
 }

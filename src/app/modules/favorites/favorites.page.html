@@ -1,0 +1,31 @@
+<ion-header [translucent]="true" class="bg-white">
+  <ion-toolbar>
+    <ion-title size="large">Favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="use-background">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Favorites</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngFor="let meal of mealList, let i = index" (click)="seeDetails(i)" class="pointer">
+    <ion-card-content>
+      <img [src]="meal.image" [alt]="meal.name" />
+      <div class="text-div">
+        <ion-card-title class="meal-name">
+          <span>{{meal.name}}</span>
+          <ion-icon (click)="removeFavorite($event, i)" name="star"></ion-icon>
+        </ion-card-title>
+        <div class="meal-chips">
+          <ion-chip [outline]="true" class="ion-no-margin">{{meal.category}}</ion-chip>
+          <ion-chip [outline]="true">{{meal.area}}</ion-chip>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <app-error-card [noFavoritesError]="noFavoritesError"></app-error-card>
+</ion-content>

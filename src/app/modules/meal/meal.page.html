@@ -15,7 +15,11 @@
     <div class="image-title-row">
       <img [src]="meal.image" [alt]="meal.name" class="meal-image" />
       <div>
-        <h3>{{meal.name}}</h3>
+        <div class="meal-name">
+          <h3>{{meal.name}}</h3>
+          <ion-icon *ngIf="!isFavorite" (click)="favoriteClicked()" class="pointer" name="star-outline"></ion-icon>
+          <ion-icon *ngIf="isFavorite" (click)="favoriteClicked()" class="pointer" name="star"></ion-icon>
+        </div>
         <div>
           <ion-chip [outline]="true" class="ion-no-margin">{{meal.category}}</ion-chip>
           <ion-chip [outline]="true">{{meal.area}}</ion-chip>

@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import("../categories/categories.module").then((m) => m.CategoriesPageModule),
       },
       {
+        path: "favorites",
+        loadChildren: () => import("../favorites/favorites.module").then((m) => m.FavoritesPageModule),
+      },
+      {
         path: "",
         redirectTo: "/tabs/home",
         pathMatch: "full",

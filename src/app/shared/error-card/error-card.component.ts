@@ -9,6 +9,7 @@ export class ErrorCardComponent implements OnInit {
   @Input() generalError: boolean = false;
   @Input() internetError: boolean = false;
   @Input() noDataError: boolean = false;
+  @Input() noFavoritesError: boolean = false;
   @Input() allowRetry: boolean = false;
   @Output() retry = new EventEmitter<any>();
 

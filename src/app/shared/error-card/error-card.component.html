@@ -21,3 +21,10 @@
     <ion-card-subtitle>Please try looking for something else</ion-card-subtitle>
   </ion-card-content>
 </ion-card>
+
+<ion-card *ngIf="noFavoritesError">
+  <ion-card-content>
+    <ion-card-title>No favorites</ion-card-title>
+    <ion-card-subtitle>Please save favorite meals</ion-card-subtitle>
+  </ion-card-content>
+</ion-card>
