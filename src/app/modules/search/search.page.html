@@ -26,6 +26,14 @@
 
   <ion-list *ngIf="mealList.length">
     <ion-item *ngFor="let meal of mealList, let i = index" class="search-item pointer white-hover">
+      <ion-thumbnail
+        slot="start"
+        class="round"
+        *ngIf="!settings?.limitedBandwidth"
+        [class.large-avatar]="!settings?.compactMode"
+      >
+        <img [src]="meal.image" [alt]="meal.name" />
+      </ion-thumbnail>
       <ion-label (click)="seeDetails(i)">{{meal.name}}</ion-label>
     </ion-item>
   </ion-list>

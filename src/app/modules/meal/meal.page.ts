@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Meal } from "src/app/models/meal";
+import { Settings } from "src/app/models/settings";
 import { DataService } from "src/app/services/data.service";
 import { FavoritesService } from "src/app/services/favorites.service";
+import { SettingsService } from "src/app/services/settings.service";
 
 @Component({
   selector: "app-meal",
@@ -11,6 +13,7 @@ import { FavoritesService } from "src/app/services/favorites.service";
 })
 export class MealPage implements OnInit {
   meal?: Meal;
+  settings?: Settings;
   isFavorite: boolean = false;
 
   generalError: boolean = false;
@@ -20,10 +23,12 @@ export class MealPage implements OnInit {
     private dataService: DataService,
     private favoritesService: FavoritesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private settingsService: SettingsService
   ) {}
 
   ngOnInit() {
+    this.getSettings();
     this.route.queryParams.subscribe((_params) => {
       const navigationExtras = this.router.getCurrentNavigation()?.extras.state;
       if (navigationExtras?.["meal"]) {
@@ -35,6 +40,14 @@ export class MealPage implements OnInit {
           this.getMeal(id);
         }
       }
+    });
+  }
+
+  getSettings() {
+    this.settingsService.settings.subscribe({
+      next: (data) => {
+        this.settings = data;
+      },
     });
   }
 

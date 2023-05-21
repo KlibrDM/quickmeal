@@ -1,6 +1,11 @@
 <ion-header [translucent]="true" class="bg-white">
   <ion-toolbar>
     <ion-title>Discover</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="goToSettings()">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,12 +18,12 @@
 
   <div *ngIf="randomMeal && !(generalError || internetError)">
     <ion-card (click)="seeDetails($event)" class="random-meal-card pointer">
-      <ion-card-content>
+      <ion-card-content *ngIf="!settings?.limitedBandwidth">
         <div class="random-image-div">
           <img [src]="randomMeal.image" [alt]="randomMeal.name" class="random-image" />
         </div>
       </ion-card-content>
-      <div class="card-text">
+      <div class="card-text" [class.text-padding-top]="settings?.limitedBandwidth">
         <ion-card-title>{{randomMeal.name}}</ion-card-title>
         <div class="card-chips">
           <ion-chip [outline]="true" class="ion-no-margin">{{randomMeal.category}}</ion-chip>

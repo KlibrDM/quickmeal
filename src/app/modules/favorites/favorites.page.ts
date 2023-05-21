@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Meal } from "src/app/models/meal";
+import { Settings } from "src/app/models/settings";
 import { FavoritesService } from "src/app/services/favorites.service";
+import { SettingsService } from "src/app/services/settings.service";
 
 @Component({
   selector: "app-favorites",
@@ -10,13 +12,27 @@ import { FavoritesService } from "src/app/services/favorites.service";
 })
 export class FavoritesPage implements OnInit {
   mealList: Meal[] = [];
+  settings?: Settings;
 
   noFavoritesError: boolean = false;
 
-  constructor(private favoritesService: FavoritesService, private router: Router) {}
+  constructor(
+    private favoritesService: FavoritesService,
+    private router: Router,
+    private settingsService: SettingsService
+  ) {}
 
   ngOnInit(): void {
+    this.getSettings();
     this.getData();
+  }
+
+  getSettings() {
+    this.settingsService.settings.subscribe({
+      next: (data) => {
+        this.settings = data;
+      },
+    });
   }
 
   getData() {

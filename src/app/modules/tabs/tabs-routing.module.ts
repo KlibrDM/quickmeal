@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren: () => import("../favorites/favorites.module").then((m) => m.FavoritesPageModule),
       },
       {
+        path: "settings",
+        loadChildren: () => import("../settings/settings.module").then((m) => m.SettingsPageModule),
+      },
+      {
         path: "",
         redirectTo: "/tabs/home",
         pathMatch: "full",

@@ -1,24 +1,39 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
+import { OnInit, AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { debounceTime, distinctUntilChanged, fromEvent, map } from "rxjs";
 import { Meal } from "src/app/models/meal";
+import { Settings } from "src/app/models/settings";
 import { DataService } from "src/app/services/data.service";
+import { SettingsService } from "src/app/services/settings.service";
 
 @Component({
   selector: "app-search",
   templateUrl: "search.page.html",
   styleUrls: ["search.page.scss"],
 })
-export class SearchPage implements AfterViewInit {
+export class SearchPage implements OnInit, AfterViewInit {
   @ViewChild("searchInput", { read: ElementRef }) searchInput!: ElementRef;
   mealList: Meal[] = [];
+  settings?: Settings;
   isSearching: boolean = false;
 
   generalError: boolean = false;
   internetError: boolean = false;
   noDataError: boolean = false;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router, private settingsService: SettingsService) {}
+
+  ngOnInit(): void {
+    this.getSettings();
+  }
+
+  getSettings() {
+    this.settingsService.settings.subscribe({
+      next: (data) => {
+        this.settings = data;
+      },
+    });
+  }
 
   ngAfterViewInit(): void {
     fromEvent(this.searchInput.nativeElement, "input")
@@ -42,7 +57,6 @@ export class SearchPage implements AfterViewInit {
         this.dataService.getSearch(searchTerm).subscribe({
           next: (data) => {
             this.mealList = data;
-
             this.isSearching = false;
             this.internetError = false;
             this.generalError = false;

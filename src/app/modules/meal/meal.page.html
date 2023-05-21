@@ -13,7 +13,7 @@
 
   <div class="ion-padding" *ngIf="meal && !(generalError || internetError)">
     <div class="image-title-row">
-      <img [src]="meal.image" [alt]="meal.name" class="meal-image" />
+      <img *ngIf="!settings?.limitedBandwidth" [src]="meal.image" [alt]="meal.name" class="meal-image" />
       <div>
         <div class="meal-name">
           <h3>{{meal.name}}</h3>
@@ -30,7 +30,7 @@
     <h4>Ingredients</h4>
     <ion-grid class="ingredients-table">
       <ion-row *ngFor="let ingredient of meal.ingredients" class="ion-align-items-center">
-        <ion-col size="2">
+        <ion-col size="2" *ngIf="!settings?.limitedBandwidth">
           <img
             [src]="'https://www.themealdb.com/images/ingredients/' + ingredient.name + '-Small.png'"
             [alt]="ingredient.name"

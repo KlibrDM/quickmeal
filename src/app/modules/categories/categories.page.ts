@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MealThumbnail } from "src/app/models/meal";
+import { Settings } from "src/app/models/settings";
 import { DataService } from "src/app/services/data.service";
+import { SettingsService } from "src/app/services/settings.service";
 
 const filters = {
   categories: {
@@ -31,15 +33,25 @@ export class CategoriesPage implements OnInit {
   selectedFilterCode = filters.categories.code;
   categoryList: string[] = [];
   mealList: MealThumbnail[] = [];
+  settings?: Settings;
 
   showCategoryList: boolean = true;
   generalError: boolean = false;
   internetError: boolean = false;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router, private settingsService: SettingsService) {}
 
   ngOnInit(): void {
+    this.getSettings();
     this.getData();
+  }
+
+  getSettings() {
+    this.settingsService.settings.subscribe({
+      next: (data) => {
+        this.settings = data;
+      },
+    });
   }
 
   getData() {

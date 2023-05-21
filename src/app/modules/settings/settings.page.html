@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-toggle [(ngModel)]="settings.limitedBandwidth" (ngModelChange)="saveSettings()">
+        Limited bandwidth
+      </ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-toggle [(ngModel)]="settings.compactMode" (ngModelChange)="saveSettings()">Compact mode</ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

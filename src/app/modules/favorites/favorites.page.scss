@@ -6,6 +6,7 @@ ion-card-content {
 
 ion-card-content > img {
   width: 100px;
+  border-radius: 8px;
 }
 
 .text-div {
@@ -30,6 +31,10 @@ ion-card-content > img {
 
 .meal-chips {
   margin-top: 8px;
+}
+
+.compact-image {
+  width: 56px !important;
 }
 
 @media screen and (min-width: 768px) {

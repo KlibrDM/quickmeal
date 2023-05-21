@@ -4,6 +4,7 @@ import { IonicModule } from "@ionic/angular";
 import { HomePage } from "./home.page";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { SharedModule } from "src/app/shared/shared.module";
+import { IonicStorageModule } from "@ionic/storage-angular";
 
 describe("HomePage", () => {
   let component: HomePage;
@@ -12,7 +13,7 @@ describe("HomePage", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomePage],
-      imports: [IonicModule.forRoot(), HttpClientTestingModule, SharedModule],
+      imports: [IonicModule.forRoot(), IonicStorageModule.forRoot(), HttpClientTestingModule, SharedModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
