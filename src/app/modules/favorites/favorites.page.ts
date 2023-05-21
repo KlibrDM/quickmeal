@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ToastController } from "@ionic/angular";
 import { Meal } from "src/app/models/meal";
 import { Settings } from "src/app/models/settings";
 import { FavoritesService } from "src/app/services/favorites.service";
@@ -19,7 +20,8 @@ export class FavoritesPage implements OnInit {
   constructor(
     private favoritesService: FavoritesService,
     private router: Router,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private toastController: ToastController
   ) {}
 
   ngOnInit(): void {
@@ -48,11 +50,18 @@ export class FavoritesPage implements OnInit {
     });
   }
 
-  removeFavorite(event: MouseEvent, index: number) {
+  async removeFavorite(event: MouseEvent, index: number) {
     event.stopPropagation();
     const meal = this.mealList[index];
     if (meal) {
       this.favoritesService.removeFavorite(meal);
+
+      const toast = await this.toastController.create({
+        message: `${meal.name} removed from favorites!`,
+        duration: 3000,
+        position: "top",
+      });
+      await toast.present();
     }
   }
 

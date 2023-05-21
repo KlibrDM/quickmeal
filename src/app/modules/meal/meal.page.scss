@@ -5,13 +5,14 @@
 
 .meal-name {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   gap: 8px;
 }
 
 .meal-name > ion-icon {
-  margin-top: 4px;
+  margin-top: 16px;
   font-size: 1.5em;
+  flex-shrink: 0;
 }
 
 .meal-name > ion-icon:hover {
@@ -36,6 +37,9 @@
 @media screen and (min-width: 768px) {
   .meal-image {
     max-width: clamp(240px, 40vw, 480px);
+  }
+  .meal-name {
+    justify-content: flex-start;
   }
   .image-title-row {
     flex-direction: row;

@@ -15,13 +15,12 @@ ion-card-content > img {
 
 .meal-name {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
 .meal-name > ion-icon {
-  font-size: 1em;
+  font-size: 1.2em;
   flex-shrink: 0;
 }
 
