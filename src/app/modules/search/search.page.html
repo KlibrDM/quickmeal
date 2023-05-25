@@ -25,7 +25,11 @@
   </div>
 
   <ion-list *ngIf="mealList.length">
-    <ion-item *ngFor="let meal of mealList, let i = index" class="search-item pointer white-hover">
+    <ion-item
+      *ngFor="let meal of mealList, let i = index"
+      (click)="seeDetails(i)"
+      class="search-item pointer white-hover"
+    >
       <ion-thumbnail
         slot="start"
         class="round"
@@ -34,7 +38,7 @@
       >
         <img [src]="meal.image" [alt]="meal.name" />
       </ion-thumbnail>
-      <ion-label (click)="seeDetails(i)">{{meal.name}}</ion-label>
+      <ion-label>{{meal.name}}</ion-label>
     </ion-item>
   </ion-list>
 

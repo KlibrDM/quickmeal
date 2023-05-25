@@ -6,3 +6,20 @@
 .round > img {
   border-radius: 100%;
 }
+
+.filter-input {
+  margin-bottom: 8px;
+}
+
+.filter-input.has-focus.input-fill-outline.ion-valid.sc-ion-input-md-h {
+  --border-color: var(--ion-color-primary);
+  --highlight-color: var(--ion-color-primary);
+}
+
+.progress-bar-placeholder {
+  height: 3px;
+}
+
+:host ion-list {
+  padding-top: 0;
+}

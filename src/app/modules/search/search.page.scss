@@ -14,3 +14,7 @@
 .round > img {
   border-radius: 100%;
 }
+
+:host ion-list {
+  padding-top: 0;
+}
