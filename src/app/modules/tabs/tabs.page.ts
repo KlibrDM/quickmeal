@@ -1,4 +1,7 @@
+import { Location } from "@angular/common";
 import { Component } from "@angular/core";
+import { App } from "@capacitor/app";
+import { Platform } from "@ionic/angular";
 
 @Component({
   selector: "app-tabs",
@@ -6,5 +9,14 @@ import { Component } from "@angular/core";
   styleUrls: ["tabs.page.scss"],
 })
 export class TabsPage {
-  constructor() {}
+  constructor(private platform: Platform, private location: Location) {
+    this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+      if (this.location.isCurrentPathEqualTo("/tabs/home")) {
+        App.exitApp();
+        processNextHandler();
+      } else {
+        this.location.back();
+      }
+    });
+  }
 }
