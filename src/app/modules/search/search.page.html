@@ -36,7 +36,7 @@
         *ngIf="!settings?.limitedBandwidth"
         [class.large-avatar]="!settings?.compactMode"
       >
-        <img [src]="meal.image" [alt]="meal.name" />
+        <img [src]="meal.image + '/preview'" [appImgFallback]="meal.image" [alt]="meal.name" />
       </ion-thumbnail>
       <ion-label>{{meal.name}}</ion-label>
     </ion-item>

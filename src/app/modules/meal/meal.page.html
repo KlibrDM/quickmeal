@@ -13,7 +13,7 @@
 
   <div class="ion-padding" *ngIf="meal && !(generalError || internetError)">
     <div class="image-title-row">
-      <img *ngIf="!settings?.limitedBandwidth" [src]="meal.image" [alt]="meal.name" class="meal-image" />
+      <img *ngIf="!settings?.limitedBandwidth" [src]="meal.image" appImgFallback [alt]="meal.name" class="meal-image" />
       <div>
         <div class="meal-name">
           <h3>{{meal.name}}</h3>
@@ -34,6 +34,7 @@
           <img
             [src]="'https://www.themealdb.com/images/ingredients/' + ingredient.name + '-Small.png'"
             [alt]="ingredient.name"
+            appImgFallback
             class="ingredient-image"
           />
         </ion-col>

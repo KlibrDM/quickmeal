@@ -20,7 +20,7 @@
     <ion-card (click)="seeDetails($event)" class="random-meal-card pointer">
       <ion-card-content *ngIf="!settings?.limitedBandwidth">
         <div class="random-image-div">
-          <img [src]="randomMeal.image" [alt]="randomMeal.name" class="random-image" />
+          <img [src]="randomMeal.image" appImgFallback [alt]="randomMeal.name" class="random-image" />
         </div>
       </ion-card-content>
       <div class="card-text" [class.text-padding-top]="settings?.limitedBandwidth">

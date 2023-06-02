@@ -16,7 +16,8 @@
       <img
         *ngIf="!settings?.limitedBandwidth"
         [class.compact-image]="settings?.compactMode"
-        [src]="meal.image"
+        [src]="meal.image + '/preview'"
+        [appImgFallback]="meal.image"
         [alt]="meal.name"
       />
       <div class="text-div">
